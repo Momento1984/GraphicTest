@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MainController" customModule="GhaphicTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите число точек" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mf0-bj-ezt">
+                                <rect key="frame" x="16" y="65" width="266" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWb-Gz-G1Q">
+                                <rect key="frame" x="290" y="63.5" width="69" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Поехали"/>
+                                <connections>
+                                    <action selector="loadData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zu7-1L-fOo"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZk-zK-Jyp" customClass="GraphView" customModule="GhaphicTest" customModuleProvider="target">
+                                <rect key="frame" x="16" y="115" width="343" height="452"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Данные сервера" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6rE-y0-IGu">
+                                <rect key="frame" x="16" y="36" width="137" height="21"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uWb-Gz-G1Q" secondAttribute="trailing" constant="16" id="5vq-Vo-N4y"/>
+                            <constraint firstItem="uWb-Gz-G1Q" firstAttribute="leading" secondItem="mf0-bj-ezt" secondAttribute="trailing" constant="8" symbolic="YES" id="63p-62-GZd"/>
+                            <constraint firstItem="mf0-bj-ezt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="DXQ-Nx-sP1"/>
+                            <constraint firstItem="uWb-Gz-G1Q" firstAttribute="baseline" secondItem="mf0-bj-ezt" secondAttribute="baseline" id="Jr3-sB-C5m"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GZk-zK-Jyp" secondAttribute="bottom" constant="100" id="VVG-aF-wBK"/>
+                            <constraint firstItem="6rE-y0-IGu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="VjV-HS-2gy"/>
+                            <constraint firstItem="6rE-y0-IGu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="WqY-OV-ad7"/>
+                            <constraint firstItem="mf0-bj-ezt" firstAttribute="top" secondItem="6rE-y0-IGu" secondAttribute="bottom" constant="8" symbolic="YES" id="bw7-gQ-r90"/>
+                            <constraint firstItem="GZk-zK-Jyp" firstAttribute="leading" secondItem="6rE-y0-IGu" secondAttribute="leading" id="jfF-Hg-hrw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GZk-zK-Jyp" secondAttribute="trailing" constant="16" id="jlC-y1-daE"/>
+                            <constraint firstItem="GZk-zK-Jyp" firstAttribute="top" secondItem="mf0-bj-ezt" secondAttribute="bottom" constant="20" id="n5c-oO-0gT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="graphView" destination="GZk-zK-Jyp" id="57b-2e-HI6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="118.29085457271366"/>
+        </scene>
+    </scenes>
+</document>

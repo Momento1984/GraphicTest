@@ -362,7 +362,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 56T29FYXL9;
-				INFOPLIST_FILE = GhaphicTest/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/GraphicTest/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -380,7 +380,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 56T29FYXL9;
-				INFOPLIST_FILE = GhaphicTest/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/GraphicTest/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

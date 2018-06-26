@@ -63,6 +63,7 @@ class MainController: UIViewController, UITextFieldDelegate {
 		let inputPoints = graphic.points
 		graphView.series.append((inputPoints, UIColor.red))
 		
+		// не самый лучший интерполятор, но лучше чем кубический спалайн
 		let akima = AkimaInterpolator(points: inputPoints)
 		
 		var splinePoints = [CGPoint]()
@@ -95,7 +96,5 @@ class MainController: UIViewController, UITextFieldDelegate {
 	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
 		super.viewWillTransition(to: size, with: coordinator)
 		graphView.setNeedsDisplay()
-
 	}
-	
 }

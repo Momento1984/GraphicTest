@@ -33,7 +33,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZk-zK-Jyp" customClass="GraphView" customModule="GraphicTest" customModuleProvider="target">
-                                <rect key="frame" x="16" y="115" width="343" height="452"/>
+                                <rect key="frame" x="16" y="111" width="343" height="502"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Данные сервера" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6rE-y0-IGu">
@@ -43,7 +43,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42H-hP-Y0F">
-                                <rect key="frame" x="123" y="575" width="129" height="30"/>
+                                <rect key="frame" x="123" y="621" width="129" height="30"/>
                                 <state key="normal" title="Сохранить в файл"/>
                                 <connections>
                                     <action selector="saveGraphic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rHu-aX-WNs"/>
@@ -54,7 +54,7 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uWb-Gz-G1Q" secondAttribute="trailing" constant="16" id="5vq-Vo-N4y"/>
                             <constraint firstItem="uWb-Gz-G1Q" firstAttribute="leading" secondItem="mf0-bj-ezt" secondAttribute="trailing" constant="8" symbolic="YES" id="63p-62-GZd"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="42H-hP-Y0F" secondAttribute="bottom" constant="62" id="6GZ-ay-Y6O"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="42H-hP-Y0F" secondAttribute="bottom" constant="16" id="6GZ-ay-Y6O"/>
                             <constraint firstItem="mf0-bj-ezt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="DXQ-Nx-sP1"/>
                             <constraint firstItem="uWb-Gz-G1Q" firstAttribute="baseline" secondItem="mf0-bj-ezt" secondAttribute="baseline" id="Jr3-sB-C5m"/>
                             <constraint firstItem="6rE-y0-IGu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="VjV-HS-2gy"/>
@@ -63,7 +63,7 @@
                             <constraint firstItem="GZk-zK-Jyp" firstAttribute="leading" secondItem="6rE-y0-IGu" secondAttribute="leading" id="jfF-Hg-hrw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GZk-zK-Jyp" secondAttribute="trailing" constant="16" id="jlC-y1-daE"/>
                             <constraint firstItem="42H-hP-Y0F" firstAttribute="top" secondItem="GZk-zK-Jyp" secondAttribute="bottom" constant="8" symbolic="YES" id="lGa-Zt-01r"/>
-                            <constraint firstItem="GZk-zK-Jyp" firstAttribute="top" secondItem="mf0-bj-ezt" secondAttribute="bottom" constant="20" id="n5c-oO-0gT"/>
+                            <constraint firstItem="GZk-zK-Jyp" firstAttribute="top" secondItem="mf0-bj-ezt" secondAttribute="bottom" constant="16" id="n5c-oO-0gT"/>
                             <constraint firstItem="42H-hP-Y0F" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="s5k-5J-9fL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

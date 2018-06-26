@@ -92,4 +92,10 @@ class MainController: UIViewController, UITextFieldDelegate {
 		}
 	}
 	
+	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+		super.viewWillTransition(to: size, with: coordinator)
+		graphView.setNeedsDisplay()
+
+	}
+	
 }

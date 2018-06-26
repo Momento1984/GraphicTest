@@ -10,7 +10,7 @@ import Foundation
 
 protocol Service {
   func load(maxCount: Int) throws -> Graphic
-  func save()
+	func save(graphic: Graphic) throws
 }
 
 class GraphicService: Service {
@@ -19,23 +19,35 @@ class GraphicService: Service {
   
   func load(maxCount: Int) throws -> Graphic {
     var params = [String: Any]()
-    params["count"] = 5
+    params["count"] = maxCount
     params["version"] = "1.1"
     let jsonString = try server.download(from: "https://demo.bankplus.ru/mobws/json/pointsList", post: params)
     let result = try server.handleResult(jsonString: jsonString)
     
     guard let points = result["points"] as? [[String: Any]] else {
-      throw Server.ServerError.incorrectFormat
+      throw Errors.incorrectFormat
     }
     
-    
-
-    //JSONDecoder().decode(Graphic.self, from: <#T##Data#>)
     return Graphic(dict: points)
   }
   
   
-  func save() {
-    
-  }
+	func save(graphic: Graphic) throws {
+		guard let jsonData = try? JSONEncoder().encode(graphic) else {
+			throw Errors.saveError
+		}
+		guard let string = String(data: jsonData, encoding: .utf8) else {
+			throw Errors.saveError
+		}
+		let file = "graphic.txt"
+		print(string)
+
+		if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+			let fileURL = dir.appendingPathComponent(file)
+			print(fileURL)
+			try string.write(to: fileURL, atomically: false, encoding: .utf8)
+		}
+	}
+		
+
 }

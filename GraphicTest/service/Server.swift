@@ -10,13 +10,7 @@ import Foundation
 
 class Server: NSObject, URLSessionDelegate {
   
-  enum ServerError: Error {
-    case invalidURL
-    case httpError(code: Int, message: String)
-    case custom(message: String)
-    case incorrectFormat
-
-  }
+	
   
   typealias Params = [String: Any]
   func download(from url: String, post: Params) throws -> String {
@@ -26,7 +20,7 @@ class Server: NSObject, URLSessionDelegate {
     response = nil
     
     guard let url = URL(string: url) else {
-      throw ServerError.invalidURL
+      throw Errors.invalidURL
     }
     var request = URLRequest(url: url)
     request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
@@ -63,17 +57,17 @@ class Server: NSObject, URLSessionDelegate {
   private func handleResponse() throws -> String {
     guard let data = data, error == nil else {
       print("error=\(String(describing: error))")
-      throw ServerError.httpError(code: 333, message: error?.localizedDescription ?? "Ошибка сервера. Попробуйте повторить позже")
+      throw Errors.httpError(code: 333, message: error?.localizedDescription ?? "Ошибка сервера. Попробуйте повторить позже")
     }
     
     if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
       print("statusCode should be 200, but is \(httpStatus.statusCode)")
       print("response = \(String(describing: response))")
-      throw ServerError.httpError(code: httpStatus.statusCode, message: "Ошибка сервера. Попробуйте повторить позже")
+      throw Errors.httpError(code: httpStatus.statusCode, message: "Ошибка сервера. Попробуйте повторить позже")
     }
     
     guard let responseString = String(data: data, encoding: .utf8) else {
-      throw ServerError.custom(message: "Не удалось распознать ответ")
+      throw Errors.custom(message: "Не удалось распознать ответ")
     }
     print("responseString = \(String(describing: responseString))")
     return responseString
@@ -83,21 +77,21 @@ class Server: NSObject, URLSessionDelegate {
   func handleResult(jsonString: String) throws -> [String: Any] {
     guard let jsonData = jsonString.data(using: .utf8),
       let data = try? JSONSerialization.jsonObject(with: jsonData) as? [String: Any] else {
-        throw Server.ServerError.incorrectFormat
+        throw Errors.incorrectFormat
     }
     guard let result = data?["result"] as? Int else {
       try handleErrorResult(jsonData: data!)
-      throw Server.ServerError.incorrectFormat
+      throw Errors.incorrectFormat
     }
     
     if result != 0 {
       let message = (data?["message"] as? String) ?? "Ошибка в данных"
       print("message = \(String(describing: response))")
-      throw ServerError.httpError(code: result, message: message)
+      throw Errors.httpError(code: result, message: message)
     }
     
     guard let dataResponse = data?["response"] as? [String: Any] else {
-        throw Server.ServerError.incorrectFormat
+        throw Errors.incorrectFormat
     }
     
     return dataResponse
@@ -105,18 +99,20 @@ class Server: NSObject, URLSessionDelegate {
   
   func handleErrorResult(jsonData: [String: Any]) throws {
     guard let dataResponse = jsonData["response"] as? [String: Any] else {
-      throw Server.ServerError.incorrectFormat
+      throw Errors.incorrectFormat
     }
     guard let result = dataResponse["result"] as? Int else {
-      throw Server.ServerError.incorrectFormat
+      throw Errors.incorrectFormat
     }
     guard let base64Encoded = dataResponse["message"] as? String else {
-      throw Server.ServerError.incorrectFormat
+      throw Errors.incorrectFormat
     }
-    let decodedData = Data(base64Encoded: base64Encoded)!
-    let decodedString = String(data: decodedData, encoding: .utf8)!
+		var errorMessage = base64Encoded
+		if let decodedData = Data(base64Encoded: base64Encoded) {
+			errorMessage = String(data: decodedData, encoding: .utf8)!
+		}
     print("message = \(String(describing: response))")
-    throw ServerError.httpError(code: result, message: decodedString)
+    throw Errors.httpError(code: result, message: errorMessage)
   }
   
   

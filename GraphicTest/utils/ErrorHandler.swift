@@ -8,18 +8,28 @@
 
 import UIKit
 
+enum Errors: Error {
+	case invalidURL
+	case httpError(code: Int, message: String)
+	case custom(message: String)
+	case incorrectFormat
+	case saveError
+}
+
 class ErrorHandler {
   
   class func alert(_ error: Error) -> UIAlertController {
     var message: String
     switch error {
-    case Server.ServerError.invalidURL:
+    case Errors.invalidURL:
       message = "Задан неверный формат URL строки"
-    case let Server.ServerError.httpError(code: code, message: errMess):
+    case let Errors.httpError(code: code, message: errMess):
       message = "Ошибка сервера \(code): \(errMess)"
-    case let Server.ServerError.custom(message: errMess):
+    case let Errors.custom(message: errMess):
       message = errMess
-    case Server.ServerError.incorrectFormat:
+		case Errors.saveError:
+			message = "Ошибка записи в файл"
+    case Errors.incorrectFormat:
       message = "Получен неверный формат данных с сервера"
     case let nserror as NSError:
       message = nserror.localizedDescription

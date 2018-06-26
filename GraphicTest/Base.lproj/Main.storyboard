@@ -13,7 +13,7 @@
         <!--Main Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainController" customModule="GhaphicTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainController" customModule="GraphicTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,17 +22,17 @@
                                 <rect key="frame" x="16" y="65" width="266" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWb-Gz-G1Q">
-                                <rect key="frame" x="290" y="63.5" width="69" height="33"/>
+                                <rect key="frame" x="290" y="64" width="69" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Поехали"/>
                                 <connections>
                                     <action selector="loadData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zu7-1L-fOo"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZk-zK-Jyp" customClass="GraphView" customModule="GhaphicTest" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZk-zK-Jyp" customClass="GraphView" customModule="GraphicTest" customModuleProvider="target">
                                 <rect key="frame" x="16" y="115" width="343" height="452"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -42,25 +42,36 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42H-hP-Y0F">
+                                <rect key="frame" x="123" y="575" width="129" height="30"/>
+                                <state key="normal" title="Сохранить в файл"/>
+                                <connections>
+                                    <action selector="saveGraphic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rHu-aX-WNs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uWb-Gz-G1Q" secondAttribute="trailing" constant="16" id="5vq-Vo-N4y"/>
                             <constraint firstItem="uWb-Gz-G1Q" firstAttribute="leading" secondItem="mf0-bj-ezt" secondAttribute="trailing" constant="8" symbolic="YES" id="63p-62-GZd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="42H-hP-Y0F" secondAttribute="bottom" constant="62" id="6GZ-ay-Y6O"/>
                             <constraint firstItem="mf0-bj-ezt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="DXQ-Nx-sP1"/>
                             <constraint firstItem="uWb-Gz-G1Q" firstAttribute="baseline" secondItem="mf0-bj-ezt" secondAttribute="baseline" id="Jr3-sB-C5m"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GZk-zK-Jyp" secondAttribute="bottom" constant="100" id="VVG-aF-wBK"/>
                             <constraint firstItem="6rE-y0-IGu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="VjV-HS-2gy"/>
                             <constraint firstItem="6rE-y0-IGu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="WqY-OV-ad7"/>
                             <constraint firstItem="mf0-bj-ezt" firstAttribute="top" secondItem="6rE-y0-IGu" secondAttribute="bottom" constant="8" symbolic="YES" id="bw7-gQ-r90"/>
                             <constraint firstItem="GZk-zK-Jyp" firstAttribute="leading" secondItem="6rE-y0-IGu" secondAttribute="leading" id="jfF-Hg-hrw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GZk-zK-Jyp" secondAttribute="trailing" constant="16" id="jlC-y1-daE"/>
+                            <constraint firstItem="42H-hP-Y0F" firstAttribute="top" secondItem="GZk-zK-Jyp" secondAttribute="bottom" constant="8" symbolic="YES" id="lGa-Zt-01r"/>
                             <constraint firstItem="GZk-zK-Jyp" firstAttribute="top" secondItem="mf0-bj-ezt" secondAttribute="bottom" constant="20" id="n5c-oO-0gT"/>
+                            <constraint firstItem="42H-hP-Y0F" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="s5k-5J-9fL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="graphView" destination="GZk-zK-Jyp" id="57b-2e-HI6"/>
+                        <outlet property="saveGraphicBtn" destination="42H-hP-Y0F" id="Ur0-u4-goX"/>
+                        <outlet property="textField" destination="mf0-bj-ezt" id="9CX-oE-449"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -10,7 +10,7 @@ import UIKit
 
 struct Graphic: Codable {
   
-  
+	
   let points: [CGPoint]
   
   init(dict: [[String: Any]]) {
